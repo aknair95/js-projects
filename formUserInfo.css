@@ -24,7 +24,13 @@
     background-color: lightblue;
     font-size: small;
   }
-  
+
+  .del-btn {
+    background: red;
+    width: 12%;
+    float: right;
+    border-radius: 2px;
+  }
   header {
     background: burlywood;
     padding: 1rem;
@@ -33,7 +39,7 @@
   
   .container {
     margin: auto;
-    width: 500px;
+    width: 700px;
     overflow: auto;
     padding: 3rem 2rem;
   }
