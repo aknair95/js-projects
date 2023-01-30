@@ -6,6 +6,10 @@ userform.addEventListener('submit',store);
 
 function store(e)
 {
-    localStorage.setItem('Name',userName.value);
-    localStorage.setItem('Email',userEmail.value);
+    let userData={
+        Name: userName.value,
+        Email: userEmail.value
+    }
+    let UserDataString=JSON.stringify(userData);
+    localStorage.setItem('UserData',UserDataString);
 }
