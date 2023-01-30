@@ -27,10 +27,20 @@
 
   .del-btn {
     background: red;
-    width: 12%;
+    width: 10%;
     float: right;
+    margin-right: 10px;
     border-radius: 2px;
+    font-weight: bold;
   }
+  .edit-btn {
+    background: lightsalmon;
+    float:right;
+    width: 10%;
+    border-radius: 2px;
+    font-weight: bold;
+  }
+
   header {
     background: burlywood;
     padding: 1rem;
