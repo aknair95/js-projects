@@ -5,6 +5,25 @@ let desc=document.getElementById('description');
 let cat=document.querySelector('#category');
 let sno=document.querySelector('#sNo');
 
+let expData={
+    Sno: sno.value, 
+    Expense: exp.value,
+    Description: desc.value,
+    Category: cat.value
+}
+
+for([key,value] in localStorage)
+{
+    let listr=localStorage.getItem(key);
+    console.log(key);
+    let liobj=JSON.parse(listr);
+    let LSstr=liobj.Sno+'-'+liobj.Expense+' '+liobj.Description+' '+liobj.Category;
+    let LSstrTag=document.createElement('li');
+    LSstrTag.className="list-group-item";
+    LSstrTag.id=sno.value;
+    expList.appendChild(LSstrTag);
+}
+
 form.addEventListener('submit',addItem);
 expList.addEventListener('click',deleteItem);
 expList.addEventListener('click',editItem);
@@ -13,12 +32,6 @@ function addItem(e)
 {   
     e.preventDefault();
    
-    let expData={
-        Sno: sno.value, 
-        Expense: exp.value,
-        Description: desc.value,
-        Category: cat.value
-    }
     let expDataString=JSON.stringify(expData);
     localStorage.setItem(sno.value,expDataString);
 
@@ -57,7 +70,7 @@ function addItem(e)
     liTag.appendChild(del);
 
     expList.appendChild(liTag);
-    sno.value=0;
+    sno.value='';
     exp.value='';
     desc.value='';
     cat.value='';
