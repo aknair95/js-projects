@@ -6,7 +6,7 @@ function getTodos() {
   }
   
   // POST REQUEST
-  function addTodo() {
+function addTodo() {
     axios.post('https://jsonplaceholder.typicode.com/todos',{
       'userid': 3,
       'title' : 'new todo',
@@ -16,8 +16,8 @@ function getTodos() {
     .catch((err) => console.log(err));
   }
   
-  // PUT/PATCH REQUEST
-  function updateTodo() {
+// PUT/PATCH REQUEST
+function updateTodo() {
       axios.put('https://jsonplaceholder.typicode.com/todos/1',{
         "title": "todo 1",
         "completed": true,
@@ -142,6 +142,7 @@ function getTodos() {
   const axiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com'
   });
+  
   
   // Show output in browser
   function showOutput(res) {
