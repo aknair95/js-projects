@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="formUserInfo.css">
+  <title>USER INFO</title>
+</head>
+<body>
+    <header>
+        <h2>USER DATA</h2>
+    </header>
+    <div class="container">
+        <form id="addform">
+        <h3>Add User</h3>
+        <div>
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" class="form-control" required>
+        </div>
+        <div>
+            <label for="emailInput" >Email-ID:</label>
+            <input type="text" id="emailInput" class='form-control' placeholder="example@gmail.com" required>
+        </div>
+        <div>
+            <label for="mobileNo">Mobile No:</label>
+            <input type="text" id="mobileNo" class="form-control" required>
+        </div>
+        <div>
+            <input type="submit" id="Sbtn" class="btn">
+        </div>
+        <div>
+            <input type="submit" value="Update" id="Ubtn" class="btn">
+        </div>
+        </form>
+        <h3 id="userdata">User List:-</h3>
+        <ul id="userInfoList" class="list-group">   
+        </ul>
+    </div>    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+<script src='formUserInfo.js'></script>
+</html>
