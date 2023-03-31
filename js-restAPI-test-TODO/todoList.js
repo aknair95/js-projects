@@ -18,7 +18,7 @@ function addTodo(e)
         Description: description.value
     };
 
-    axios.post("https://crudcrud.com/api/82a107b5209549c38a700fe716bde181/todos",todoObj)
+    axios.post("https://crudcrud.com/api/40593fa1b4e04828898140e0f2d30520/todos",todoObj)
     .then((res)=> console.log(res))
     .catch((err)=>console.log(err));
 
@@ -27,13 +27,13 @@ function addTodo(e)
     liTag1.className="list-group-item";
     let liText1=document.createTextNode(`Todo Name-${todoName.value} Description-${description.value}`);
 
-    let doneBtn=document.createElement("input");
+    doneBtn=document.createElement("input");
     doneBtn.type='button';
     doneBtn.id="okBtn";
     doneBtn.className="done-btn";
     doneBtn.value="DONE";
 
-    let delBtn=document.createElement("input");
+    delBtn=document.createElement("input");
     delBtn.type="button";
     delBtn.id="delBtn";
     delBtn.className="delete-btn";
@@ -51,7 +51,7 @@ function addTodo(e)
 
 function reload(e1)
 {
-    axios.get("https://crudcrud.com/api/82a107b5209549c38a700fe716bde181/todos")
+    axios.get("https://crudcrud.com/api/40593fa1b4e04828898140e0f2d30520/todos")
     .then((res)=> {
         for(let i=0;i<res.data.length;i++)
         {
@@ -69,13 +69,13 @@ function showTodoList(todoData)
     liTag1.className="list-group-item";
     let liText1=document.createTextNode(`Todo Name-${todoData.TodoName} Description-${todoData.Description}`);
 
-    let doneBtn=document.createElement("input");
+    doneBtn=document.createElement("input");
     doneBtn.type='button';
     doneBtn.id="okBtn";
     doneBtn.className="done-btn";
     doneBtn.value="DONE";
 
-    let delBtn=document.createElement("input");
+    delBtn=document.createElement("input");
     delBtn.type="button";
     delBtn.id="delBtn";
     delBtn.className="delete-btn";
@@ -91,11 +91,11 @@ function removeTodo(e2)
     if(e2.target.classList.contains('delete-btn'))
     {
         let delLi=e2.target.parentElement;
-        axios.delete(`https://crudcrud.com/api/82a107b5209549c38a700fe716bde181/todos/${delLi.id}`)
+        axios.delete(`https://crudcrud.com/api/40593fa1b4e04828898140e0f2d30520/todos/${delLi.id}`)
         .then((res)=> console.log(res))
         .catch((err)=> console.log(err));
-        
-        todoList1.removeChild(delLi);
+          
+        todoList1.removeChild(delLi);    
     }  
 }
 
@@ -104,9 +104,9 @@ function doneTodo(e3)
     if(e3.target.classList.contains('done-btn'))
     {   
         let doneLi=e3.target.parentElement;
+        doneLi.removeChild(e3.target);
         todoList2.appendChild(doneLi);
-        todoList1.removeChild(doneLi);
-       
+        todoList1.removeChild(doneLi); 
     }
    
 }
