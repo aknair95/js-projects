@@ -1,3 +1,4 @@
+// fetching dom target points
 
 let todoName=document.getElementById("todo");
 let description=document.getElementById("descript");
@@ -5,6 +6,7 @@ let addItem=document.getElementById("todoForm");
 let todoList1=document.getElementById("todoList1");
 let todoList2=document.getElementById("todoList2");
 
+// creating event listners for all events
 
 addItem.addEventListener('submit',addTodo);
 window.addEventListener("DOMContentLoaded",reload);
@@ -13,7 +15,7 @@ todoList2.addEventListener("click",removeTodoDone);
 todoList1.addEventListener("click",doneTodo);
 
 
-async function addTodo(e)
+async function addTodo(e)                           // to enlist todo's in the remaining todo's list
 {   
     e.preventDefault();
     let todoObj={
@@ -23,25 +25,25 @@ async function addTodo(e)
     };
 
     try{
-        const res=await axios.post("https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos",todoObj);
+        const res= await axios.post("https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos",todoObj);
         console.log(res);
     }catch(err){        
         console.log(err);
     }
 
-    let liTag1=document.createElement("li");
+    let liTag1=document.createElement("li");           // creating li HTML tag
     liTag1.id=todoObj._id;
     liTag1.className="list-group-item";
     liTag1.setAttribute("status","pending");
     let liText1=document.createTextNode(`Todo Name-${todoName.value} Description-${description.value}`);
 
-    doneBtn=document.createElement("input");
+    doneBtn=document.createElement("input");            // creating done button
     doneBtn.type='button';
     doneBtn.id="okBtn";
     doneBtn.className="done-btn";
     doneBtn.value="DONE";
 
-    delBtn=document.createElement("input");
+    delBtn=document.createElement("input");             // creating delete button
     delBtn.type="button";
     delBtn.id="delBtn";
     delBtn.className="delete-btn";
@@ -57,10 +59,10 @@ async function addTodo(e)
 
 }
 
-async function reload(e1)
+async function reload(e1)                          // to fetch data from endpoints and enlist when refreshed/reloaded
 {
     try{
-        const res=await axios.get("https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos");
+        const res= await axios.get("https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos");
         for(let i=0;i<res.data.length;i++)
         {
             showTodoList(res.data[i]);
@@ -72,7 +74,7 @@ async function reload(e1)
      
 }
 
-function showTodoList(todoData)
+function showTodoList(todoData)                         // function called in reload() function
 {
     let liTag=document.createElement("li");
     liTag.id=todoData._id;
@@ -95,7 +97,7 @@ function showTodoList(todoData)
     liTag.appendChild(doneBtn);
     liTag.appendChild(delBtn);
 
-    if(todoData.status==="pending")
+    if(todoData.status==="pending")                     // for checking data to be enlisted in remaining or done todo's list
     {
         todoList1.appendChild(liTag);
     }
@@ -105,7 +107,7 @@ function showTodoList(todoData)
     }
     
 }
-async function removeTodoRemain(e2)
+async function removeTodoRemain(e2)                     // to delete todo's from remaining todo's list
 {   
     if(e2.target.classList.contains('delete-btn'))
     {
@@ -121,7 +123,7 @@ async function removeTodoRemain(e2)
     }  
 }
 
-async function removeTodoDone(e3)
+async function removeTodoDone(e3)                      // to delete todo's from done todo's list
 {   
     if(e3.target.classList.contains('delete-btn'))
     {
@@ -137,7 +139,7 @@ async function removeTodoDone(e3)
     }  
 }
 
-async function doneTodo(e4)
+async function doneTodo(e4)                             // to move todo's from remaining todo's list to done todo's list
 {
     if(e4.target.classList.contains('done-btn'))
     {   
