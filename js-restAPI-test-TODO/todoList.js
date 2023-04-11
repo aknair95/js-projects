@@ -25,7 +25,7 @@ async function addTodo(e)                           // to enlist todo's in the r
     };
 
     try{
-        const res= await axios.post("https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos",todoObj);
+        const res= await axios.post("https://crudcrud.com/api/d0157686e3ce4a9386d4aa91e3a78045/todos",todoObj);
         console.log(res);
     }catch(err){        
         console.log(err);
@@ -62,7 +62,7 @@ async function addTodo(e)                           // to enlist todo's in the r
 async function reload(e1)                          // to fetch data from endpoints and enlist when refreshed/reloaded
 {
     try{
-        const res= await axios.get("https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos");
+        const res= await axios.get("https://crudcrud.com/api/d0157686e3ce4a9386d4aa91e3a78045/todos");
         for(let i=0;i<res.data.length;i++)
         {
             showTodoList(res.data[i]);
@@ -113,7 +113,7 @@ async function removeTodoRemain(e2)                     // to delete todo's from
     {
         let delLi=e2.target.parentElement;
         try{
-            const res=await axios.delete(`https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos/${delLi.id}`);
+            const res=await axios.delete(`https://crudcrud.com/api/d0157686e3ce4a9386d4aa91e3a78045/todos/${delLi.id}`);
             console.log(res);
         }
         catch(err){
@@ -129,7 +129,7 @@ async function removeTodoDone(e3)                      // to delete todo's from 
     {
         let delLi=e3.target.parentElement;
         try{
-            const res=await axios.delete(`https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos/${delLi.id}`);
+            const res=await axios.delete(`https://crudcrud.com/api/d0157686e3ce4a9386d4aa91e3a78045/todos/${delLi.id}`);
             console.log(res);
         }
         catch(err){
@@ -153,7 +153,7 @@ async function doneTodo(e4)                             // to move todo's from r
         doneLi.status="done";
 
         try{
-            const res1=await axios.get(`https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos/${doneLi.id}`);
+            const res1=await axios.get(`https://crudcrud.com/api/d0157686e3ce4a9386d4aa91e3a78045/todos/${doneLi.id}`);
             console.log(res1.data);
             todoObj1={
                 TodoName: res1.data.TodoName,
@@ -165,7 +165,7 @@ async function doneTodo(e4)                             // to move todo's from r
         }
 
         try{
-            const res2=await axios.put(`https://crudcrud.com/api/c3e062260ebd46d0a3eaf1595794f120/todos/${doneLi.id}`,todoObj1);
+            const res2=await axios.put(`https://crudcrud.com/api/d0157686e3ce4a9386d4aa91e3a78045/todos/${doneLi.id}`,todoObj1);
             console.log(res2);
         }
         catch(err)
